@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>JS Arrays</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    
+</head>
+<body>
+    <script>
+        function numbersThenCharacters(arr) {
+  // Helper function to check if a value is a number
+  function isNumber(value) {
+    return typeof value === 'number' && !isNaN(value);
+  }
+  
+  // Sort each subarray separately
+  for (let i = 0; i < arr.length; i++) {
+    arr[i] = arr[i].sort((a, b) => {
+      if (isNumber(a) && isNumber(b)) {
+        return a - b; // Sort numbers in ascending order
+      } else if (isNumber(a)) {
+        return -1; // Numbers come before letters
+      } else if (isNumber(b)) {
+        return 1; // Numbers come before letters
+      } else {
+        return a.localeCompare(b); // Sort letters in ascending order
+      }
+    });
+  }
+  
+  return arr;
+}
+
+// Example usage:
+const input1 = [
+  [11, 12, 24, 23, "a", "b"],
+  [56, "c", 45],
+  [67, "d"],
+  ["f", "e", 78]
+];
+const result1 = numbersThenCharacters(input1);
+console.log(result1);
+
+const input2 = [
+  [11, 26, 45.4, "f", "a", "b"],
+  [0],
+  [1.5, "d","X",35,"s"],
+  ["f", "e", 58],
+  ["p","Y","Z"],
+  [98,72]
+];
+const result2 = numbersThenCharacters(input2);
+console.log(result2);
+
+    </script>
+</body>
+</html>
