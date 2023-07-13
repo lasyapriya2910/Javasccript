@@ -10,22 +10,19 @@
 <body>
     <script>
         function numbersThenCharacters(arr) {
-  // Helper function to check if a value is a number
   function isNumber(value) {
     return typeof value === 'number' && !isNaN(value);
   }
-  
-  // Sort each subarray separately
   for (let i = 0; i < arr.length; i++) {
     arr[i] = arr[i].sort((a, b) => {
       if (isNumber(a) && isNumber(b)) {
-        return a - b; // Sort numbers in ascending order
+        return a - b; 
       } else if (isNumber(a)) {
-        return -1; // Numbers come before letters
+        return -1;
       } else if (isNumber(b)) {
-        return 1; // Numbers come before letters
+        return 1;
       } else {
-        return a.localeCompare(b); // Sort letters in ascending order
+        return a.localeCompare(b);
       }
     });
   }
@@ -33,7 +30,6 @@
   return arr;
 }
 
-// Example usage:
 const input1 = [
   [11, 12, 24, 23, "a", "b"],
   [56, "c", 45],
